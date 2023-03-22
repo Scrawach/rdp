@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxft0j7sb56n7"]
+
+[ext_resource type="Script" path="res://example/Example.gd" id="1_5wjcj"]
+[ext_resource type="Script" path="res://example/Plot.gd" id="1_60367"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jetb4"]
+bg_color = Color(0.121569, 0.129412, 0.133333, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.894118, 0.87451, 0.854902, 0.729412)
+
+[sub_resource type="Theme" id="Theme_mentq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydn4m"]
+bg_color = Color(0.0627451, 0.596078, 0.968627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t11p0"]
+bg_color = Color(0.0627451, 0.596078, 0.968627, 1)
+
+[node name="RamerDouglasPeucker Example" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wjcj")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.890196, 0.870588, 0.85098, 1)
+theme_override_font_sizes/font_size = 24
+text = "Ramer-Douglas-Peucker algorithm"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Example" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background Panel" type="Panel" parent="Example"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jetb4")
+
+[node name="Foreground Panel" type="Panel" parent="Example/Background Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jetb4")
+
+[node name="Plot" type="Control" parent="Example/Background Panel/Foreground Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_60367")
+primary_grid_color = Color(0.890196, 0.870588, 0.85098, 0.501961)
+secondary_grid_color = Color(0.89, 0.87, 0.85, 0.1)
+chart_color = Color(0.0627451, 0.596078, 0.968627, 1)
+
+[node name="Input Panel" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.8
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Distance Slider" type="HSlider" parent="Input Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_mentq")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ydn4m")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_t11p0")
+max_value = 10.0
+step = 0.001
+
+[node name="Distance Label" type="Label" parent="Input Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.890196, 0.870588, 0.85098, 1)
+theme_override_font_sizes/font_size = 24
+text = "Distance:"
+vertical_alignment = 2
+uppercase = true
+
+[node name="Generate Button" type="Button" parent="Input Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "GENERATE"
+
+[connection signal="value_changed" from="Input Panel/Distance Slider" to="." method="_on_distance_slider_value_changed"]
+[connection signal="pressed" from="Input Panel/Generate Button" to="." method="_on_generate_button_pressed"]
