@@ -7,13 +7,13 @@ class_name Example
 var previous_distance: float
 
 func _ready() -> void:
-	plot.generate()
+    plot.generate()
 
 func _on_distance_slider_value_changed(distance: float) -> void:
-	plot.simplify(distance)
-	previous_distance = distance
-	distance_field.text = "Distance: %s" % [distance]
+    plot.simplify(distance)
+    previous_distance = distance
+    distance_field.text = "Distance: %s" % [distance]
 
 func _on_generate_button_pressed() -> void:
-	plot.generate()
-	plot.simplify(previous_distance)
+    plot.generate()
+    plot.simplify(previous_distance)
