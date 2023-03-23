@@ -1,5 +1,5 @@
 # Ramer-Douglas-Peucker algorithm
-The Ramer-Douglas-Peucker algorithm implementation for Godot on `gdscript`.
+The Ramer-Douglas-Peucker algorithm implementation for Godot 4 on `gdscript`.
 
 # Example
 <p align="center">
