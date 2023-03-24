@@ -10,6 +10,8 @@ const SECONDARY_GRID_STEP: Vector2 = Vector2(100, 100)
 @export var primary_grid_color: Color
 @export var secondary_grid_color: Color
 @export var chart_color: Color
+@export var font: Font = FontVariation.new()
+@export var font_size: int = 14
 
 var chart_points: PackedVector2Array
 var simplified_points: PackedVector2Array
@@ -19,15 +21,15 @@ func simplify(distance: float) -> void:
 	queue_redraw()
 
 func generate() -> void:
-	var amount_of_points: int = ceil(size.x / PRIMARY_GRID_STEP.x) + 1
-	chart_points = PointGenerator.generate_splined(amount_of_points, POINTS_BORDER, SPLINE_DENSITY)
+	var max_visible_amount_of_points: int = ceil(size.x / PRIMARY_GRID_STEP.x) + 1
+	chart_points = PointGenerator.generate_splined(max_visible_amount_of_points, POINTS_BORDER, SPLINE_DENSITY)
 	simplified_points = chart_points
 	queue_redraw()
 
 func _draw() -> void:
-	_draw_grid(SECONDARY_GRID_STEP, primary_grid_color)
-	_draw_grid(PRIMARY_GRID_STEP, secondary_grid_color)
-	_draw_grid_numbers(SECONDARY_GRID_STEP, primary_grid_color, FontVariation.new(), 14)
+	_draw_grid(PRIMARY_GRID_STEP, primary_grid_color)
+	_draw_grid(SECONDARY_GRID_STEP, secondary_grid_color)
+	_draw_grid_numbers(SECONDARY_GRID_STEP, secondary_grid_color, font, font_size)
 	
 	if chart_points.size() > 1:
 		_draw_chart(simplified_points, chart_color)
@@ -44,12 +46,12 @@ func _draw_grid(step: Vector2, color: Color) -> void:
 		y -= step.y
 
 func _draw_grid_numbers(step: Vector2, color: Color, font: Font, font_size: int) -> void:
-	const line_offset: int = 5
-	
+	const LINE_OFFSET: int = 5
+	var height = size.y - font_size / 2.0
 	var x = 0
 	while x < size.x:
 		var text = str(int(x / PRIMARY_GRID_STEP.x))
-		var point = Vector2(x + line_offset, size.y - font_size / 2.0)
+		var point = Vector2(x + LINE_OFFSET, height)
 		draw_string(font, point, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, color)
 		x += step.x
 

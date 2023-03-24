@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxft0j7sb56n7"]
+[gd_scene load_steps=8 format=3 uid="uid://dxft0j7sb56n7"]
 
-[ext_resource type="Script" path="res://example/Example.gd" id="1_5wjcj"]
-[ext_resource type="Script" path="res://example/Plot.gd" id="1_60367"]
+[ext_resource type="Script" path="res://example/Example.gd" id="1_8hifi"]
+[ext_resource type="Script" path="res://example/Plot.gd" id="2_pvqwa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jetb4"]
 bg_color = Color(0.121569, 0.129412, 0.133333, 1)
@@ -11,6 +11,8 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.894118, 0.87451, 0.854902, 0.729412)
 
+[sub_resource type="FontVariation" id="FontVariation_frpbb"]
+
 [sub_resource type="Theme" id="Theme_mentq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydn4m"]
@@ -19,14 +21,14 @@ bg_color = Color(0.0627451, 0.596078, 0.968627, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t11p0"]
 bg_color = Color(0.0627451, 0.596078, 0.968627, 1)
 
-[node name="RamerDouglasPeucker Example" type="Control"]
+[node name="Example" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5wjcj")
+script = ExtResource("1_8hifi")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -83,10 +85,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_60367")
-primary_grid_color = Color(0.890196, 0.870588, 0.85098, 0.501961)
-secondary_grid_color = Color(0.89, 0.87, 0.85, 0.1)
+script = ExtResource("2_pvqwa")
+primary_grid_color = Color(0.890196, 0.870588, 0.85098, 0.101961)
+secondary_grid_color = Color(0.890196, 0.870588, 0.85098, 0.501961)
 chart_color = Color(0.0627451, 0.596078, 0.968627, 1)
+font = SubResource("FontVariation_frpbb")
 
 [node name="Number Of Point Label" type="Label" parent="Example/Background Panel"]
 layout_mode = 1

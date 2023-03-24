@@ -25,8 +25,7 @@ static func _simplify(points: PackedVector2Array, start: int, end: int, epsilon_
 	
 	var result_1 = _simplify(points, start, index, epsilon_squared)
 	var result_2 = _simplify(points, index, end, epsilon_squared)
-	var sum = result_1.slice(0, result_1.size() - 1) + result_2
-	return sum
+	return result_1.slice(0, result_1.size() - 1) + result_2
 
 static func _perpendicular_squared(target: Vector2, p1: Vector2, p2: Vector2) -> float:
 	var to_target = target - p1
