@@ -13,6 +13,6 @@ config_version=5
 config/name="Rdp"
 config/features=PackedStringArray("4.0", "Forward Plus")
 
-[editor]
+[editor_plugins]
 
-export/convert_text_resources_to_binary=true
+enabled=PackedStringArray("res://addons/rdp/plugin.cfg")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxft0j7sb56n7"]
 
-[ext_resource type="Script" path="res://example/Example.gd" id="1_8hifi"]
-[ext_resource type="Script" path="res://example/Plot.gd" id="2_pvqwa"]
+[ext_resource type="Script" path="res://addons/rdp/example/Example.gd" id="1_meiyb"]
+[ext_resource type="Script" path="res://addons/rdp/example/Plot.gd" id="2_e3slg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jetb4"]
 bg_color = Color(0.121569, 0.129412, 0.133333, 1)
@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8hifi")
+script = ExtResource("1_meiyb")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -85,7 +85,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_pvqwa")
+script = ExtResource("2_e3slg")
 primary_grid_color = Color(0.890196, 0.870588, 0.85098, 0.101961)
 secondary_grid_color = Color(0.890196, 0.870588, 0.85098, 0.501961)
 chart_color = Color(0.0627451, 0.596078, 0.968627, 1)
